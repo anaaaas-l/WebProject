@@ -1,7 +1,8 @@
 <?php
 require_once __DIR__ . '/../config.php';
 requireAdmin();
-
+/* hada rah cmnt assi aanass */
+/*  w hada awl tbdil */
 if (isset($_GET['approve'])) {
     $id = (int) $_GET['approve'];
     if ($id > 0) {
