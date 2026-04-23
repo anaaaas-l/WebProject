@@ -2,8 +2,7 @@
 require_once __DIR__ . '/../config.php';
 
 if (isAdmin()) {
-    header('Location: /share/admin/dashboard.php');
-    exit;
+    redirectTo('admin/dashboard.php');
 }
 
 $error = '';
@@ -18,8 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($admin && password_verify($password, $admin['password_hash'])) {
         $_SESSION['admin_id'] = (int) $admin['id'];
         $_SESSION['admin_username'] = $admin['username'];
-        header('Location: /share/admin/dashboard.php');
-        exit;
+        redirectTo('admin/dashboard.php');
     }
 
     $error = 'Identifiants invalides.';

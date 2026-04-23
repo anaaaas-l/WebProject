@@ -12,11 +12,11 @@ require_once __DIR__ . '/../config.php';
 <body class="bg-light">
 <nav class="navbar navbar-expand-lg bg-white border-bottom mb-4">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="/share/index.php">ShareRessources</a>
+        <a class="navbar-brand fw-bold" href="<?= e(app_url('accueil.php')); ?>">ShareRessources</a>
         <div class="navbar-nav ms-auto">
-            <a class="nav-link" href="/share/index.php">Accueil</a>
-            <a class="nav-link" href="/share/upload.php">Déposer</a>
-            <a class="nav-link" href="/share/admin/login.php">Admin</a>
+            <a class="nav-link" href="<?= e(app_url('accueil.php')); ?>">Accueil</a>
+            <a class="nav-link" href="<?= e(app_url('upload.php')); ?>">Déposer</a>
+            <a class="nav-link" href="<?= e(app_url('admin/login.php')); ?>">Admin</a>
         </div>
     </div>
 </nav>

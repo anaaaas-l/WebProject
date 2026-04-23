@@ -8,8 +8,7 @@ if (isset($_GET['approve'])) {
         $stmt = db()->prepare('UPDATE resources SET is_approved = 1 WHERE id = :id');
         $stmt->execute(['id' => $id]);
     }
-    header('Location: /share/admin/dashboard.php');
-    exit;
+    redirectTo('admin/dashboard.php');
 }
 
 if (isset($_GET['delete'])) {
@@ -27,8 +26,7 @@ if (isset($_GET['delete'])) {
             $delete->execute(['id' => $id]);
         }
     }
-    header('Location: /share/admin/dashboard.php');
-    exit;
+    redirectTo('admin/dashboard.php');
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_category'])) {
@@ -37,8 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_category'])) {
         $insert = db()->prepare('INSERT INTO categories (name) VALUES (:name)');
         $insert->execute(['name' => $name]);
     }
-    header('Location: /share/admin/dashboard.php');
-    exit;
+    redirectTo('admin/dashboard.php');
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_category_id'], $_POST['edit_category_name'])) {
@@ -51,8 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_category_id'], $
             'id' => $id,
         ]);
     }
-    header('Location: /share/admin/dashboard.php');
-    exit;
+    redirectTo('admin/dashboard.php');
 }
 
 $stats = [
@@ -74,7 +70,7 @@ require __DIR__ . '/../includes/header.php';
 
 <div class="d-flex justify-content-between align-items-center mb-3">
     <h1 class="h3 mb-0">Dashboard Admin</h1>
-    <a class="btn btn-outline-secondary btn-sm" href="/share/admin/logout.php">Déconnexion</a>
+    <a class="btn btn-outline-secondary btn-sm" href="<?= e(app_url('admin/logout.php')); ?>">Déconnexion</a>
 </div>
 
 <div class="row g-3 mb-4">
@@ -121,8 +117,8 @@ require __DIR__ . '/../includes/header.php';
                                     <td><?= e($doc['category_name']); ?></td>
                                     <td><?= e($doc['created_at']); ?></td>
                                     <td class="d-flex gap-2">
-                                        <a class="btn btn-sm btn-success" href="/share/admin/dashboard.php?approve=<?= (int) $doc['id']; ?>">Approuver</a>
-                                        <a class="btn btn-sm btn-danger" href="/share/admin/dashboard.php?delete=<?= (int) $doc['id']; ?>" onclick="return confirm('Supprimer ce document ?');">Supprimer</a>
+                                        <a class="btn btn-sm btn-success" href="<?= e(app_url('admin/dashboard.php?approve=' . (int) $doc['id'])); ?>">Approuver</a>
+                                        <a class="btn btn-sm btn-danger" href="<?= e(app_url('admin/dashboard.php?delete=' . (int) $doc['id'])); ?>" onclick="return confirm('Supprimer ce document ?');">Supprimer</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

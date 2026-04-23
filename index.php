@@ -88,8 +88,8 @@ require __DIR__ . '/includes/header.php';
                             <td><?= (int) $resource['download_count']; ?></td>
                             <td><?= (int) $resource['like_count']; ?></td>
                             <td class="d-flex gap-2">
-                                <a class="btn btn-sm btn-success" href="/share/download.php?id=<?= (int) $resource['id']; ?>">Télécharger</a>
-                                <a class="btn btn-sm btn-outline-primary" href="/share/like.php?id=<?= (int) $resource['id']; ?>">Like</a>
+                                <a class="btn btn-sm btn-success" href="<?= e(app_url('download.php?id=' . (int) $resource['id'])); ?>">Télécharger</a>
+                                <a class="btn btn-sm btn-outline-primary" href="<?= e(app_url('like.php?id=' . (int) $resource['id'])); ?>">Like</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

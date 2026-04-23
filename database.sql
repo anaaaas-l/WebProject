@@ -30,6 +30,13 @@ CREATE TABLE IF NOT EXISTS admins (
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 
+CREATE TABLE IF NOT EXISTS students (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nomlogin VARCHAR(80) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
 INSERT INTO categories (name) VALUES
 ('Informatique'),
 ('Mathématiques'),

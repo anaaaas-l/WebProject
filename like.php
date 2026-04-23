@@ -7,5 +7,4 @@ if ($id > 0) {
     $update->execute(['id' => $id]);
 }
 
-header('Location: /share/index.php');
-exit;
+redirectTo('index.php');
